@@ -1,0 +1,102 @@
+[
+    {
+        "nome": "Cristiano",
+        "email":"cristianoalazaro@hotmail.com",
+        "salario":1500,
+        "estado":"PR",
+        "empresa":"Laticínios Carolina",
+        "idade":44,
+        "sexo":"Masculino",
+        "cpf":"200.173.428-05"
+    },
+    {
+        "nome": "Elenice",
+        "email":"niceclazaro@gmail.com",
+        "salario":1800,
+        "estado":"PR",
+        "empresa":"Do lar",
+        "idade":42,
+        "sexo":"Feminino",
+        "cpf":"547.298.065-10"
+    },
+    {
+        "nome": "Cristiane",
+        "email":"cristianeclazaro@gmail.com",
+        "salario":1000,
+        "estado":"PR",
+        "empresa":"Estudante",
+        "idade":15,
+        "sexo":"Feminino",
+        "cpf":"203.163.528-25"
+    },
+    {
+        "nome": "Bruno",
+        "email":"brunoclazaro@gmail.com",
+        "salario":2500,
+        "estado":"PR",
+        "empresa":"Estudante",
+        "idade":10,
+        "sexo":"Masculino",
+        "cpf":"340.573.425-65"
+    },
+    {
+        "nome": "Clóvis",
+        "email":"clovislazaro@hotmail.com",
+        "salario":1600,
+        "estado":"SP",
+        "empresa":"Aposentado",
+        "idade":69,
+        "sexo":"Masculino",
+        "cpf":"125.173.428-05"
+    },
+    {
+        "nome": "Silvia",
+        "email":"silviacardoso@gmail.com",
+        "salario":1850,
+        "estado":"SP",
+        "empresa":"Dentista",
+        "idade":44,
+        "sexo":"Feminino",
+        "cpf":"213.453.498-00"
+    },
+    {
+        "nome": "Zaqueo",
+        "email":"zaqueocardoso@hotmail.com",
+        "salario":2000,
+        "estado":"SP",
+        "empresa":"Aposentado",
+        "idade":72,
+        "sexo":"Masculino",
+        "cpf":"244.883.558-05"
+    },
+    {
+        "nome": "Luzia",
+        "email":"",
+        "salario":1365,
+        "estado":"SP",
+        "empresa":"Do lar",
+        "idade":69,
+        "sexo":"Feminino",
+        "cpf":"2547.173.428-05"
+    },
+    {
+        "nome": "Rosemeire",
+        "email":"rosemeire@gmail.com",
+        "salario":2900,
+        "estado":"SP",
+        "empresa":"Vendedora",
+        "idade":32,
+        "sexo":"Feminino",
+        "cpf":"100.153.429-06"
+    },
+    {
+        "nome": "Joel",
+        "email":"joelvalentim@gmail.com",
+        "salario":8500,
+        "estado":"SP",
+        "empresa":"Empresário",
+        "idade":36,
+        "sexo":"Masculino",
+        "cpf":"301.188.499-11"
+    }
+]
