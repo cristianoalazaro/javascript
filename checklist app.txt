@@ -1,0 +1,31 @@
+Checklist base do App
+Chamar dotenv
+chamar express
+app = express()
+chamar mongoose
+mongoose.connect() - retorna promise (disparar o emit())
+chama express-session
+chama connect-mongo para salvar as sessões na base de dados do mongoDB
+chama a connect-flash para mensagens auto-destrutivas (utiliza as sessões)
+chama o routes(módulo das rotas)
+chama o path (trabalhar com caminhos)
+chama o helmet (recomendação da Express pra aumentar a segurança)
+chama o csurf(csrf - gera token nos formulários para aumentar a segurança)
+chama os middlewares (dica: desestrutura-os)
+app.use(helmet())
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+app.use(static(path.resolve(__dirname, 'public')));
+cria configuração de sessões
+app.use(sessionOptions)
+app.use(flash())
+(opcional) app.set('views', path.resolve(__dirname, 'src', 'views'));
+(opcional) app.set('view engine', 'ejs');
+app.use(csrf());
+app.use(middlewareGlobal);
+app.use(checkCsrfError);
+app.use(csrfMiddleware);
+app.use(route);
+app.on('Pronto',()=>app.listen(3000,()=>{
+    console.log('Servidor carregado na porta 30000');
+}));
