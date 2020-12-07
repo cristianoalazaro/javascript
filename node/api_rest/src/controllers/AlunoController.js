@@ -1,10 +1,18 @@
 import Aluno from '../models/Aluno';
-import User from '../models/User';
+import Foto from '../models/Foto';
 
 class AlunoController {
   async index(req, res) {
     try {
-      const alunos = await Aluno.findAll();
+      const alunos = await Aluno.findAll({
+        attributes:
+          ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura'],
+        order: [['id', 'DESC'],[Foto,'id','DESC']],
+        include: {
+          model: Foto,
+          attributes: ['url', 'filename'],
+        }
+      });
       return res.json(alunos);
     } catch (e) {
       return res.json(null);
@@ -13,7 +21,14 @@ class AlunoController {
 
   async show(req, res) {
     try {
-      const aluno = await Aluno.findByPk(req.params.id);
+      const aluno = await Aluno.findByPk(req.params.id, {
+        attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura'],
+        order: [['id','DESC'],[Foto, 'id', 'DESC']],
+        include: {
+          model: Foto,
+          attributes: [ 'url', 'filename']
+        }
+      });
       if (!aluno) {
         return res.status(400).json({
           error: ['Aluno não encontrado'],
@@ -28,48 +43,48 @@ class AlunoController {
   }
 
   async store(req, res) {
-    try{
+    try {
       const aluno = await Aluno.create(req.body);
       return res.json(aluno);
-    }catch(e){
+    } catch (e) {
       return res.status(400).json({
-        errors: e.errors.map(error=>error.message),
+        errors: e.errors.map(error => error.message),
       });
     }
   }
 
   async update(req, res) {
-    try{
-      if(!req.params.id){
+    try {
+      if (!req.params.id) {
         return res.status(400).json({
           errors: ['ID não enviado'],
         });
       }
       const aluno = await Aluno.findByPk(req.params.id);
-      if (!aluno){
+      if (!aluno) {
         return res.status(400).json({
-          error:['Aluno não encontrado'],
+          error: ['Aluno não encontrado'],
         });
       }
       const alunoAlterado = await aluno.update(req.body);
       return res.json(alunoAlterado);
-    }catch(e){
+    } catch (e) {
       return res.status(400).json({
-        errors: e.errors.map(error=>error.message),
+        errors: e.errors.map(error => error.message),
       });
     }
   }
 
   async delete(req, res) {
-    try{
-      if (!req.params.id){
+    try {
+      if (!req.params.id) {
         return res.status(400).json({
-          errors:['ID não enviado'],
+          errors: ['ID não enviado'],
         });
       }
 
       const aluno = await Aluno.findByPk(req.params.id);
-      if(!aluno){
+      if (!aluno) {
         return res.status(400).json({
           errors: ['Aluno não encontrado'],
         });
@@ -77,9 +92,9 @@ class AlunoController {
 
       await aluno.destroy();
       return res.json(`Aluno ${req.params.id} deletado com sucesso`);
-    }catch(e){
+    } catch (e) {
       return res.status(400).json({
-        errors: e.errors.map(error=>error.message),
+        errors: e.errors.map(error => error.message),
       })
     }
   }
