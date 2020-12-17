@@ -6,10 +6,30 @@ dotenv.config();
 import './src/database';
 
 import express from 'express';
+import cors from 'cors';
+import helmet from 'helmet';
+
 import userRoutes from './src/routes/userRoutes';
 import alunoRoutes from './src/routes/alunoRoutes';
 import tokenRoutes from './src/routes/tokenRoutes';
 import fotoRoutes from './src/routes/fotoRoutes';
+
+/* Poderia ser assim
+const whiteList = [
+  'http://www.algumacoisa.com.br',
+  'localhost:3000'
+];
+
+const corsOptions = {
+  origin: function (origin, callback){
+    if(whiteList.indexOf(origin) !== -1){
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}
+*/
 
 class App{
   constructor(){
@@ -25,6 +45,9 @@ class App{
   }
 
   routes(){
+    this.app.use(cors());
+    //this.app.use(cors(corsOptions)); Poderia ser assim
+    this.app.use(helmet());
     this.app.use('/users/',userRoutes);
     this.app.use('/tokens/',tokenRoutes);
     this.app.use('/alunos/', alunoRoutes);
