@@ -1,15 +1,14 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
 
-import './Page1.css';
+import * as example from './store/modules/example/actions';
 
 export default function Page1(){
     const dispatch = useDispatch();
+
     const handleClick = ()=>{
-        dispatch({
-            type:'BOTAO_CLICADO',
-        })
+        dispatch(example.clicaBotaoRequest());
     }
 
-    return <button onClick={handleClick}>Clique aqui</button>
+    return <button onClick={handleClick}>Click Here</button>
 }
