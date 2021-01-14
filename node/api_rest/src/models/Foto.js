@@ -1,8 +1,8 @@
 import Sequelize, {Model} from 'sequelize';
 
-import appConfig from '../config/appConfig';
+import appConfig from '../config/appConfig.js';
 
-export default class Foto extends Model{
+class Foto extends Model{
     static init(sequelize){
       super.init({
         originalname: {
@@ -42,3 +42,5 @@ export default class Foto extends Model{
       //No módulo de aluno vc também poderia dizer this.hasMany ou this hasOne(e terminar da mesma maneira)
     }
 }
+
+export default Foto;

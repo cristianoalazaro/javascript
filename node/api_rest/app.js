@@ -1,19 +1,29 @@
 import dotenv from 'dotenv';
+//const dotenv = require('dotenv');
 import {resolve} from 'path';
+//const {resolve} = require('path');
 
 dotenv.config();
 
-import './src/database';
+import './src/database/index.js';
+//require('./src/database');
 
 import express from 'express';
-import cors from 'cors';
-import helmet from 'helmet';
+//const express = require('express');
+ import cors from 'cors';
+//const cors = require('cors');
+ import helmet from 'helmet';
+//const helmet = require('helmet');
 //import delay from 'express-delay';
 
-import userRoutes from './src/routes/userRoutes';
-import alunoRoutes from './src/routes/alunoRoutes';
-import tokenRoutes from './src/routes/tokenRoutes';
-import fotoRoutes from './src/routes/fotoRoutes';
+ import userRoutes from './src/routes/userRoutes.js';
+//const userRoutes = require('./src/routes/userRoutes');
+ import alunoRoutes from './src/routes/alunoRoutes.js';
+//const alunosRoutes = require('./src/routes/alunoRoutes');
+ import tokenRoutes from './src/routes/tokenRoutes.js';
+//const tokenRoutes = require('./src/routes/tokenRoutes');
+ import fotoRoutes from './src/routes/fotoRoutes.js';
+//const fotoRoutes = require('./src/routes/fotoRoutes');
 
 /* Poderia ser assim
 const whiteList = [

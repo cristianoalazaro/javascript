@@ -1,6 +1,13 @@
-import User from '../models/UserModel.js';
-import { errorList, validateName, validateLastname, validateEmail, validatePassword } from '../validators/userValidator.js';
+import bcryptjs from 'bcryptjs';
+import mongoose from 'mongoose';
 
+import User from '../models/UserModel.js';
+import {
+    errorList, validateName, validateLastname, validateEmail,
+    emailExist, validatePassword
+} from '../validators/userValidator.js';
+
+const ObjectId = mongoose.Types.ObjectId;
 
 const index = async (req, res) => {
     try {
@@ -18,17 +25,39 @@ const store = async (req, res) => {
         validateLastname(lastname);
         validateEmail(email);
         validatePassword(password);
+        await emailExist(email);
 
-        if (errorList.length > 0){
+        if (errorList.length > 0) {
             res.status(400).json(errorList);
-            errorList.splice(0,errorList.length);
+            return errorList.splice(0, errorList.length);
         }
 
-        await User.create(req.body);
+        const salt = bcryptjs.genSaltSync();
+        const passwordHash = bcryptjs.hashSync(password, salt);
+
+        await User.create({name, lastname, email, password:passwordHash});
         return res.json({ 'Success': 'Usuário cadastrado com sucesso!' });
     } catch (error) {
         res.status(400).json({ errors: error.errors });
     }
 }
 
-export default { index, store };
+const show = async (req, res)=>{
+    try{
+        const id = req.params.id;
+
+        const user = await User.findOne({"_id": ObjectId(id)});
+        const {_id, name, lastname, email} = user;
+        return res.json({_id, name, lastname, email});
+
+    }catch(error){
+        return res.json('errors: Usuário não encontrado');
+    }
+}
+
+// const passwordIsValid = (password)=>{
+//     const hash = User.fin
+//     return bcryptjs.compare(pass, passwordHash);
+// }
+
+export default { index, store, show };

@@ -1,6 +1,8 @@
-require('dotenv').config();
+//require('dotenv').config();
+import dotenv from 'dotenv';
+dotenv.config();
 
-module.exports = {
+const databaseConfig = {
     dialect: 'mariadb',
     host: process.env.DATABASE_HOST,
     port: process.env.DATABASE_PORT,
@@ -18,3 +20,5 @@ module.exports = {
         timezone: 'America/Sao_Paulo'},
     timezone: 'America/Sao_Paulo',
 }
+
+export default databaseConfig;

@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema({
         required: [true, 'Senha não pode ser vazio'],
         trim: true,
         minlength: [6, 'Senha deve ter entre 6 e 50 caracteres'],
-        maxlength: [50, 'Senha deve ter entre 6 e 50 caracteres'],
+        maxlength: [100, 'Senha deve ter entre 6 e 100 caracteres'],
     }
 });
 

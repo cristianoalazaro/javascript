@@ -1,8 +1,8 @@
-import Sequelize, {Model} from 'sequelize';
+import Sequelize from 'sequelize';
 
-import Foto from '../models/Foto';
+import Foto from '../models/Foto.js';
 
-export default class Aluno extends Model{
+class Aluno extends Model{
     static init(sequelize){
         super.init({
             nome: {
@@ -71,3 +71,5 @@ export default class Aluno extends Model{
       this.hasMany(models.Foto, {foreignKey:'aluno_id'});
     }
 }
+
+export default Aluno;
