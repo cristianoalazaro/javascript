@@ -23,6 +23,8 @@ const app = _express2.default.call(void 0, );
 
 app.use(_cors2.default.call(void 0, ));
 app.use(_helmet2.default.call(void 0, ));
+app.use(_express2.default.urlencoded({extended:true}));
+
 app.use(_express2.default.json());
 app.get('/', (req, res)=> res.json('ok'));
 app.use('/users/', _userRoutesjs.userRoutes);
